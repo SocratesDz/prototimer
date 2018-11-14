@@ -1,6 +1,7 @@
 package com.socratesdiaz.prototimer.data.models.jira
 
 import com.squareup.moshi.Json
+import org.json.JSONObject
 
 data class IssueBean(
 
@@ -41,7 +42,7 @@ data class IssueBean(
 	val id: String? = null,
 
 	@Json(name="fields")
-	val fields: String? = null,
+	val fields: JSONObject? = null,
 
 	@Json(name="key")
 	val key: String? = null,

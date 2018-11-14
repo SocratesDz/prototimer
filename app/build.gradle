@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+def keyPropertiesFile = rootProject.file("keys.properties")
+def keyProperties = new Properties()
+keyProperties.load(new FileInputStream(keyPropertiesFile))
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -11,6 +15,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "apiKey", keyProperties['apiKey'])
     }
     buildTypes {
         release {
@@ -25,8 +30,9 @@ dependencies {
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.squareup.moshi:moshi:1.8.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:3.11.0"
     implementation 'com.squareup.retrofit2:retrofit:2.4.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
     implementation "com.squareup.retrofit2:converter-moshi:2.4.0"
     implementation 'io.reactivex:rxandroid:1.2.1'
     implementation "io.reactivex.rxjava2:rxjava:2.2.3"
