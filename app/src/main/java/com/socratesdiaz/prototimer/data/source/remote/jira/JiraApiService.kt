@@ -9,5 +9,5 @@ import retrofit2.http.POST
 
 interface JiraApiService {
     @POST("search")
-    fun search(@Header("Authorization") apiKey: String, @Body searchRequest: JQLRequest): Single<SearchResultsBean>
+    fun search(@Body searchRequest: JQLRequest): Single<SearchResultsBean>
 }
