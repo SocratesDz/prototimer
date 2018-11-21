@@ -24,7 +24,7 @@ class ApiServiceProviderImpl: ApiServiceProvider {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl("https://colmapp.atlassian.net/rest/api/3/")
+            .baseUrl(BuildConfig.jiraClientUrl)
             .addConverterFactory(MoshiConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(httpClient)
