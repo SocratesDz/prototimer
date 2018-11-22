@@ -42,7 +42,7 @@ data class IssueBean(
 	val id: String? = null,
 
 	@Json(name="fields")
-	val fields: JSONObject? = null,
+	val fields: Any? = null,
 
 	@Json(name="key")
 	val key: String? = null,

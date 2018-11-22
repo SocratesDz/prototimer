@@ -13,6 +13,5 @@ class App: Application(), KodeinAware {
     override val kodein = Kodein.lazy {
         bind<Context>("ApplicationContext") with singleton { this@App.applicationContext }
         import(networkModule)
-        import(fragmentModule)
     }
 }

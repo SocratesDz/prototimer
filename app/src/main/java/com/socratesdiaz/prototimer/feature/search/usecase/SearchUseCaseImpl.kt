@@ -7,6 +7,8 @@ import io.reactivex.Single
 
 class SearchUseCaseImpl(val api: JiraApiService): SearchUseCase {
     override fun searchTask(term: String): Single<SearchResultsBean> {
-        return api.search(JQLRequest(jql = "summary ~ $term"))
+        val keyRegex = Regex("^[a-zA-Z]+-\\d+$")
+        val jqlQuery = if(term.matches(keyRegex)) "key = $term" else "summary ~ \"$term\""
+        return api.search(JQLRequest(jql = jqlQuery))
     }
 }

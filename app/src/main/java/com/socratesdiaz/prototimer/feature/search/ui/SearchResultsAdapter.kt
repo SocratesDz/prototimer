@@ -28,8 +28,10 @@ class SearchResultsAdapter(val items: List<IssueBean?>?): RecyclerView.Adapter<S
         val subtitle: TextView? = itemView.findViewById(android.R.id.text2)
 
         fun bind(issue: IssueBean?) {
-            title?.text = issue?.names
-            subtitle?.text = issue?.id
+            val fieldMap = issue?.fields as? Map<String, Any>
+            val summary = fieldMap?.get("summary") as? String
+            title?.text = summary
+            subtitle?.text = issue?.key
         }
     }
 }
